@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="helloService" class="aop.HelloServiceImpl"/>
+
+    <bean id="testAfterAdvice" class="aop.TestAfterAdvice"/>
+
+    <bean id="testAroundAdvice" class="aop.TestAroundAdvice"/>
+
+    <bean id="testBeforeAdvice" class="aop.TestBeforeAdvice" />
+
+    <bean id="regexpMethodPointcutAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="testBeforeAdvice"/>
+        <property name="patterns">
+            <list>
+                <value>.*hello</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice" ref="testBeforeAdvice"/>
+     </bean>
+
+    <bean class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice" ref="testAroundAdvice"/>
+    </bean>
+
+    <bean class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice" ref="testAfterAdvice"/>
+    </bean>
+
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+
+</beans>

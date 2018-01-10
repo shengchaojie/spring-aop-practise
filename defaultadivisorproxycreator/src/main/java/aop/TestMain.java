@@ -1,0 +1,15 @@
+package aop;
+
+import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class TestMain {
+
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application.xml");
+        HelloService helloService = applicationContext.getBean(HelloService.class);
+        helloService.hello("scj");
+        helloService.bye("scj");
+    }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+
+    <bean id="helloService" class="aop.HelloServiceImpl"/>
+
+    <bean id="testAspect" class="aop.TestAspect"/>
+
+
+
+    <aop:config>
+        <aop:aspect ref="testAspect"  >
+            <aop:pointcut id="pointcut" expression="execution(* *.hello(..))"/>
+            <aop:before method="before" pointcut-ref="pointcut"/>
+            <aop:after method="after" pointcut-ref="pointcut"/>
+        </aop:aspect>
+        <!--测试基于注解的切面 -->
+        <aop:aspect ref="testAspect">
+            <aop:pointcut id="pointcut2" expression="@annotation(aop.TestAnnotation)" />
+            <aop:before method="before" pointcut-ref="pointcut2"/>
+            <aop:after method="after" pointcut-ref="pointcut2"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
