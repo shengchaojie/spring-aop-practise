@@ -29,8 +29,9 @@ public class TestMain {
         HelloService helloService4 = applicationContext.getBean("aop3",HelloService.class);
         helloService4.bye("scj");
         helloService4.hello("scj");
+        System.out.println("======================================================================");
 
-        //声明式
+        System.out.println("Aop 声明式注入");
         IntegrateService integrateService =applicationContext.getBean(IntegrateService.class);
         integrateService.test();
 
