@@ -30,5 +30,9 @@ public class TestMain {
         helloService4.bye("scj");
         helloService4.hello("scj");
 
+        //声明式
+        IntegrateService integrateService =applicationContext.getBean(IntegrateService.class);
+        integrateService.test();
+
     }
 }
