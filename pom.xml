@@ -14,6 +14,7 @@
         <module>defaultadivisorproxycreator</module>
         <module>aspect-xml</module>
         <module>aspect-annotation</module>
+        <module>circularReferences</module>
     </modules>
 
     <properties>
