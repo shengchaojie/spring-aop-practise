@@ -1,7 +1,4 @@
-package com.scj.demo;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package aop;
 
 public class AService {
 
@@ -9,5 +6,10 @@ public class AService {
 
     public void setbService(BService bService) {
         this.bService = bService;
+    }
+
+    public void hello(){
+        System.out.println("hello");
+        bService.bye();
     }
 }
