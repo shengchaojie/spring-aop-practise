@@ -13,14 +13,14 @@
 
 
     <aop:config>
+        <aop:pointcut id="pointcut" expression="execution(* *.hello(..))"/>
+        <aop:pointcut id="pointcut2" expression="execution(* *.hello(..))"/>
         <aop:aspect ref="testAspect"  >
-            <aop:pointcut id="pointcut" expression="execution(* *.hello(..))"/>
             <aop:before method="before" pointcut-ref="pointcut"/>
             <aop:after method="after" pointcut-ref="pointcut"/>
         </aop:aspect>
         <!--测试基于注解的切面 -->
         <aop:aspect ref="testAspect">
-            <aop:pointcut id="pointcut2" expression="@annotation(aop.TestAnnotation)" />
             <aop:before method="before" pointcut-ref="pointcut2"/>
             <aop:after method="after" pointcut-ref="pointcut2"/>
         </aop:aspect>
