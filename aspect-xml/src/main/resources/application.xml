@@ -10,22 +10,23 @@
 
     <bean id="testAspect" class="aop.TestAspect"/>
 
+    <bean id="testAspect2" class="aop.TestAspect2"/>
 
 
     <aop:config>
         <aop:pointcut id="pointcut" expression="execution(* *.hello(..))"/>
         <aop:pointcut id="pointcut2" expression="execution(* *.bye(..))"/>
-        <aop:aspect ref="testAspect"  >
-            <aop:around method="around" pointcut-ref="pointcut"/>
+        <aop:aspect ref="testAspect" order="2" >
+           <!-- <aop:around method="around" pointcut-ref="pointcut"/>-->
             <aop:before method="before" pointcut-ref="pointcut"/>
             <aop:after method="after" pointcut-ref="pointcut"/>
-            <aop:after-throwing method="throwRuntimeException" pointcut-ref="pointcut" throwing="exception"/>
-            <aop:after-returning method="afterReturn" pointcut-ref="pointcut" />
+            <!--<aop:after-throwing method="throwRuntimeException" pointcut-ref="pointcut" throwing="exception"/>
+            <aop:after-returning method="afterReturn" pointcut-ref="pointcut" />-->
         </aop:aspect>
         <!--测试基于注解的切面 -->
-        <aop:aspect ref="testAspect">
-            <aop:before method="before" pointcut-ref="pointcut2"/>
-            <aop:after method="after" pointcut-ref="pointcut2"/>
+        <aop:aspect ref="testAspect2" order="3">
+            <aop:before method="before" pointcut-ref="pointcut"/>
+            <aop:after method="after" pointcut-ref="pointcut"/>
         </aop:aspect>
     </aop:config>
 

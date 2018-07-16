@@ -16,6 +16,7 @@
         <module>aspect-annotation</module>
         <module>circularReferences</module>
         <module>InfrastructureAdvisorAutoProxyCreator</module>
+        <module>introduction</module>
     </modules>
 
     <properties>
